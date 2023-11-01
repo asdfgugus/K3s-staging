@@ -1,3 +1,3 @@
 # K3s-staging
 
-used to stage K3s cluster with infra tools
+used to stage K3s home cluster with infra tools

@@ -1,7 +1,58 @@
+upgradeCompatibility: "1.14"
+
 policyEnforcementMode: "always"
+
+kubeProxyReplacement: true
+k8sServiceHost: "192.168.7.31"
+k8sServicePort: "6443"
+
+rollOutCiliumPods: true
+
+ipam:
+  mode: "cluster-pool"
+  operator:
+    clusterPoolIPv4PodCIDRList: ["10.43.0.0/16"]
+    clusterPoolIPv4MaskSize: 24
+
+
 hubble:
-  enabled: true
+  metrics:
+    enabled:
+    - dns:query;ignoreAAAA
+    - drop
+    - tcp
+    - flow
+    - icmp
+    - http
   relay:
     enabled: true
+    rollOutPods: true
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1024M
+      requests:
+        cpu: 100m
+        memory: 64Mi
   ui:
     enabled: true
+
+operator:
+  replicas: 1
+  rollOutPods: true
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+resources:
+  limits:
+    cpu: 2000m
+    memory: 2Gi
+  requests:
+    cpu: 300m
+    memory: 300Mi
+
