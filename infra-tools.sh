@@ -18,7 +18,7 @@ kubectl apply -f templates/metallb
 
 # install argocd
 helm repo add argo https://argoproj.github.io/argo-helm
-helm install argo-cd argo/argo-cd --version 5.50.0 --values values/argocd.yaml -n argocd --create-namespace --wait
+helm install argo-cd argo/argo-cd --version 6.7.3 --values values/argocd.yaml -n argocd --create-namespace --wait
 
 # configure argocd
 ARGOCD_DEFAULT_PW=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
